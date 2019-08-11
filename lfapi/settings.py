@@ -139,5 +139,13 @@ REST_FRAMEWORK = {
     "UNAUTHENTICATED_USER":None,     # 匿名，request.user = None
     "UNAUTHENTICATED_TOKEN":None,    # 匿名，request.auth = None
 
+    # 权限配置
+    "DEFAULT_PERMISSION_CLASSES":['api.utils.permission.SVIPPermission'],
 
+    # 频率限制
+    "DEFAULT_THROTTLE_CLASSES":["api.utils.throttle.UserThrottle"],
+    "DEFAULT_THROTTLE_RATES":{
+        "Luffy":'3/m',
+        "LuffyUser":'6/m',
+    }
 }

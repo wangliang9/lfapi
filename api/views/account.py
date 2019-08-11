@@ -4,9 +4,12 @@ from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from api import models
 import uuid
+from api.utils.throttle import VisitThrottle
 
 class AuthView(APIView):
     authentication_classes = []
+    permission_classes = []
+    throttle_classes = [VisitThrottle,]
     def post(self,request,*args,**kwargs):
         """
         用户登录认证
